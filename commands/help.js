@@ -51,6 +51,7 @@ function buildHelpComponents() {
       new TextDisplayBuilder().setContent(
         "✧ **Utilities**\n" +
         "• `.ping` (`.p`) — check bot latency and responsiveness\n" +
+        "• `.ram` (`.stats`, `.mem`) — view bot, hosting and server stats\n" +
         "• `.guide` (`.tutorial`) — token extraction bookmarklet & video guide"
       )
     )
@@ -86,7 +87,7 @@ function buildFallbackHelpEmbed() {
       },
       {
         name: "✧ Utilities",
-        value: "• `.ping` (`.p`) — Check bot ping\n• `.guide` (`.tutorial`) — Token bookmarklet guide",
+        value: "• `.ping` (`.p`) — Check bot ping\n• `.ram` (`.stats`) — System & host stats\n• `.guide` (`.tutorial`) — Token bookmarklet guide",
       }
     )
     .setFooter({ text: "Click buttons below to view platform token bookmarklet guides" });

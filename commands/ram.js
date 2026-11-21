@@ -8,7 +8,6 @@ const {
 } = require("discord.js");
 const os = require("os");
 const { questEngine, runningInstances } = require("../instances");
-const { MSG, OWNER_ROLE_ID, OWNER_ID } = require("../config");
 
 function formatBytes(bytes) {
   return (bytes / 1024 / 1024).toFixed(1) + " MB";
@@ -28,7 +27,7 @@ function formatUptime(seconds) {
   if (h > 0) parts.push(`${h}h`);
   if (m > 0) parts.push(`${m}m`);
   parts.push(`${s}s`);
-  return parts.join(" ");
+  return parts.join(" ") || "0s";
 }
 
 function getCpuSnapshot() {
@@ -54,19 +53,9 @@ async function getCpuPercent() {
 module.exports = {
   name: "ram",
   aliases: ["memory", "mem", "stats", "usage"],
-  description: "show bot cpu and ram usage in component v2 embed (owner only)",
-  guildOnly: true,
+  description: "show bot, hosting, server and resource performance statistics",
+  guildOnly: false,
   async execute(message, args, { client } = {}) {
-    const member = message.member || (message.guild ? await message.guild.members.fetch(message.author.id).catch(() => null) : null);
-    const isOwner =
-      message.author.id === OWNER_ID ||
-      member?.roles?.cache?.has(OWNER_ROLE_ID);
-
-    if (!isOwner) {
-      await message.reply(MSG.no_permission);
-      return;
-    }
-
     const cpuPercentPromise = getCpuPercent();
 
     const mem = process.memoryUsage();
@@ -77,19 +66,24 @@ module.exports = {
 
     const cpus = os.cpus();
     const cpuCount = cpus.length;
-
     const cpuPercent = await cpuPercentPromise;
+
+    const hostUptime = formatUptime(os.uptime());
+    const botUptime = formatUptime(process.uptime());
+    const loadAvg = os.loadavg ? os.loadavg().map((n) => n.toFixed(2)).join(" · ") : "N/A";
 
     const activeSessions = questEngine ? questEngine.activeSessionsCount : (runningInstances ? runningInstances.size : 0);
     const activeOperations = questEngine ? questEngine.getActiveQuestOperationsCount() : 0;
 
     const avatarUrl = client?.user?.displayAvatarURL?.({ size: 128 }) || "https://cdn.discordapp.com/embed/avatars/0.png";
+    const pingMs = client?.ws?.ping >= 0 ? `${client.ws.ping}ms` : "N/A";
+    const guildCount = client?.guilds?.cache?.size || 1;
 
     const headerSection = new SectionBuilder()
       .addTextDisplayComponents(
         new TextDisplayBuilder().setContent(
-          `𝜗𝜚 **system & engine performance**\n` +
-          `-# uptime: ${formatUptime(process.uptime())} · node ${process.version} · pid ${process.pid}`
+          `𝜗𝜚 **system & host performance**\n` +
+          `-# bot uptime: ${botUptime} · host uptime: ${hostUptime} · node ${process.version}`
         )
       )
       .setThumbnailAccessory(
@@ -101,11 +95,22 @@ module.exports = {
       .addSeparatorComponents(new SeparatorBuilder())
       .addTextDisplayComponents(
         new TextDisplayBuilder().setContent(
+          `✦ **Server & Hosting Environment**\n` +
+          `• **OS & Platform:** \`${os.type()} ${os.release()} (${os.arch()})\`\n` +
+          `• **Host Uptime:** \`${hostUptime}\` *(System Boot)*\n` +
+          `• **Load Average:** \`${loadAvg}\`\n` +
+          `• **Gateway Ping:** \`${pingMs}\` · **Guilds:** \`${guildCount}\``
+        )
+      )
+      .addSeparatorComponents(new SeparatorBuilder())
+      .addTextDisplayComponents(
+        new TextDisplayBuilder().setContent(
           `✦ **Memory (RAM) Usage**\n` +
           `• **Process RSS:** \`${formatBytes(mem.rss)}\` *(Resident Set Size)*\n` +
           `• **V8 Heap Used:** \`${formatBytes(mem.heapUsed)}\` / \`${formatBytes(mem.heapTotal)}\`\n` +
           `• **External & Buffers:** \`${formatBytes(mem.external)}\` · \`${formatBytes(mem.arrayBuffers)}\` ArrayBuffers\n` +
-          `• **System RAM:** \`${formatGB(usedSysMem)}\` / \`${formatGB(totalSysMem)}\` (\`${sysMemPct}%\` used)`
+          `• **System Total RAM:** \`${formatGB(usedSysMem)}\` / \`${formatGB(totalSysMem)}\` (\`${sysMemPct}%\` used)\n` +
+          `• **Free System RAM:** \`${formatGB(freeSysMem)}\``
         )
       )
       .addSeparatorComponents(new SeparatorBuilder())
@@ -113,7 +118,8 @@ module.exports = {
         new TextDisplayBuilder().setContent(
           `✦ **CPU & Hardware**\n` +
           `• **CPU Usage:** \`${cpuPercent}%\`\n` +
-          `• **Cores:** \`${cpuCount}\``
+          `• **Logical Cores:** \`${cpuCount} cores\`\n` +
+          `• **Architecture:** \`${os.arch()}\``
         )
       )
       .addSeparatorComponents(new SeparatorBuilder())
@@ -132,12 +138,14 @@ module.exports = {
       flags: MessageFlags.IsComponentsV2,
     }).catch(async (err) => {
       console.error("[ram command] error sending Components V2:", err?.message);
-      // Fallback in case guild does not support components v2 flag
       await message.reply(
-        `**System & Engine Performance**\n` +
+        `**System & Host Performance**\n` +
+        `• **Host / OS:** ${os.type()} (${os.arch()}) | Uptime: ${hostUptime}\n` +
+        `• **Bot Uptime:** ${botUptime} | Node: ${process.version} | Ping: ${pingMs}\n` +
         `• **Process RSS:** ${formatBytes(mem.rss)}\n` +
-        `• **Heap:** ${formatBytes(mem.heapUsed)} / ${formatBytes(mem.heapTotal)}\n` +
-        `• **CPU:** ${cpuPercent}%\n` +
+        `• **V8 Heap:** ${formatBytes(mem.heapUsed)} / ${formatBytes(mem.heapTotal)}\n` +
+        `• **System RAM:** ${formatGB(usedSysMem)} / ${formatGB(totalSysMem)} (${sysMemPct}%)\n` +
+        `• **CPU:** ${cpuPercent}% (${cpuCount} cores)\n` +
         `• **Active Sessions:** ${activeSessions}`
       ).catch(() => {});
     });
