@@ -15,7 +15,7 @@ function buildHelpComponents() {
   const container = new ContainerBuilder()
     .addTextDisplayComponents(
       new TextDisplayBuilder().setContent(
-        "**Coquette Bot — Commands**\n-# prefix: `.`  ·  all user commands (staff/admin commands omitted)"
+        "**Gulbano Bot — Commands**\n-# prefix: `.`  ·  all user commands (staff/admin commands omitted)"
       )
     )
     .addSeparatorComponents(new SeparatorBuilder())
@@ -70,7 +70,7 @@ function buildHelpComponents() {
 function buildFallbackHelpEmbed() {
   const embed = new EmbedBuilder()
     .setColor(0xffb6c1)
-    .setTitle("Coquette Bot — Commands")
+    .setTitle("Gulbano Bot — Commands")
     .setDescription("Prefix: `.`  ·  All user commands (staff/admin commands omitted)")
     .addFields(
       {
