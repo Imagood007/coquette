@@ -86,30 +86,7 @@ module.exports = {
         await mainGuild.members.fetch(message.author.id).catch(() => null);
       }
     }
-
-    // Skip ad completely ONLY for premium role access people
-    if (isPremium(message.member)) {
-      const components = await buildQuestComponents(message.author.id, message.member);
-      await message.reply({ components, flags: MessageFlags.IsComponentsV2 });
-      return;
-    }
-
-    const { getNextAd } = require("../adsTracker");
-    const { buildAdComponents, buildAdSkipComponents } = require("../handlers");
-    const adConfig = getNextAd();
-
-    // Show the ad with a 5-second countdown for regular users (including when unlimited mode is enabled)
-    let msgToEdit = await message.reply({ components: buildAdComponents(adConfig, 5, message.author.id), flags: MessageFlags.IsComponentsV2 });
-    for (let i = 4; i > 0; i--) {
-      await new Promise(r => setTimeout(r, 1000));
-      await msgToEdit.edit({ components: buildAdComponents(adConfig, i, message.author.id), flags: MessageFlags.IsComponentsV2 }).catch(() => {});
-    }
-    await new Promise(r => setTimeout(r, 1000));
-
-    // After countdown — show skip button (user must click to proceed)
-    await msgToEdit.edit({
-      components: buildAdSkipComponents(adConfig, message.author.id, msgToEdit.id),
-      flags: MessageFlags.IsComponentsV2,
-    }).catch(() => {});
+const components = await buildQuestComponents(message.author.id, message.member);
+    await message.reply({ components, flags: MessageFlags.IsComponentsV2 });
   },
 };
