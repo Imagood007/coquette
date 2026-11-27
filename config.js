@@ -16,30 +16,30 @@ try {
 
 // ── credentials ───────────────────────────────────────────────
 const MANAGER_TOKEN    = process.env.MANAGER_TOKEN || fileConfig.MANAGER_TOKEN || "";
-const CLIENT_ID        = process.env.CLIENT_ID || fileConfig.CLIENT_ID || "1575784583423594576";
+const CLIENT_ID        = "1575784583423594576";
 const GROQ_API_KEY     = process.env.GROQ_API_KEY || fileConfig.GROQ_API_KEY || "";
 const GEMINI_API_KEY   = process.env.GEMINI_API_KEY || fileConfig.GEMINI_API_KEY || "";
 const BOOSTER_TOKEN    = process.env.BOOSTER_TOKEN || fileConfig.BOOSTER_TOKEN || "";
 
 // ── ids ───────────────────────────────────────────────────────
-const MAIN_SERVER_ID      = process.env.MAIN_SERVER_ID || fileConfig.MAIN_SERVER_ID || "1517465560579838072";
-const OWNER_ID            = process.env.OWNER_ID || fileConfig.OWNER_ID || "1459973597559783538";
+const MAIN_SERVER_ID      = "1517465560579838072";
+const OWNER_ID            = "1459973597559783538";
 const OWNER_ROLE_ID       = process.env.OWNER_ROLE_ID || fileConfig.OWNER_ROLE_ID || "";
 const ADMIN_ROLE_ID       = process.env.ADMIN_ROLE_ID || fileConfig.ADMIN_ROLE_ID || "";
-const STAFF_ROLE_ID       = process.env.STAFF_ROLE_ID || fileConfig.STAFF_ROLE_ID || "1575787789725737081";
-const ALLOWED_ROLE_ID     = process.env.ALLOWED_ROLE_ID || fileConfig.ALLOWED_ROLE_ID || "1575787703130394735";
+const STAFF_ROLE_ID       = "1575787789725737081";
+const ALLOWED_ROLE_ID     = "1575787703130394735";
 const ALLOWED_ROLE_ID_2   = process.env.ALLOWED_ROLE_ID_2 || fileConfig.ALLOWED_ROLE_ID_2 || "";
 const BOOSTER_ROLE_ID     = process.env.BOOSTER_ROLE_ID || fileConfig.BOOSTER_ROLE_ID || "";
 const BOOSTER_ALT_ROLE_ID = process.env.BOOSTER_ALT_ROLE_ID || fileConfig.BOOSTER_ALT_ROLE_ID || "";
-const PREMIUM_ROLE_ID     = process.env.PREMIUM_ROLE_ID || fileConfig.PREMIUM_ROLE_ID || "1575882046356586697";
+const PREMIUM_ROLE_ID     = "1575882046356586697";
 const QUEST_ROLE_4        = process.env.QUEST_ROLE_4 || fileConfig.QUEST_ROLE_4 || ""; // role that gives 4 quest/day limit
 const ALLOWED_ROLE_IDS    = [ALLOWED_ROLE_ID, ALLOWED_ROLE_ID_2, PREMIUM_ROLE_ID, BOOSTER_ROLE_ID, BOOSTER_ALT_ROLE_ID].filter(Boolean);
 
 // ── channels ──────────────────────────────────────────────────
-const LOG_CHANNEL_ID        = process.env.LOG_CHANNEL_ID || fileConfig.LOG_CHANNEL_ID || "1575787326301282496";
+const LOG_CHANNEL_ID        = "1575787326301282496";
 const GUIDE_CHANNEL_ID      = process.env.GUIDE_CHANNEL_ID || fileConfig.GUIDE_CHANNEL_ID || "";
-const INVITE_LOG_CHANNEL_ID = process.env.INVITE_LOG_CHANNEL_ID || fileConfig.INVITE_LOG_CHANNEL_ID || "1575787297960632410";
-const STAFF_LOG_CHANNEL_ID  = process.env.STAFF_LOG_CHANNEL_ID || fileConfig.STAFF_LOG_CHANNEL_ID || "1575787272119525376";
+const INVITE_LOG_CHANNEL_ID = "1575787297960632410";
+const STAFF_LOG_CHANNEL_ID  = "1575787272119525376";
 
 // ── behaviour ─────────────────────────────────────────────────
 const PREFIX                    = process.env.PREFIX || fileConfig.PREFIX || ".";
