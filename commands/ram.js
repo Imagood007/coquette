@@ -129,7 +129,7 @@ module.exports = {
           `• **Active User Sessions:** \`${activeSessions}\` running\n` +
           `• **Active Quest Tasks:** \`${activeOperations}\` in-flight\n` +
           `• **RAM per Session:** \`~0.6 – 1.8 MB\` *(shared architecture)*\n\n` +
-          `-# 𝜗𝜚 .gg/coquettes · autoquest`
+          `-# 𝜗𝜚 .Gulbano · autoquest`
         )
       );
 
