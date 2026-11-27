@@ -16,37 +16,37 @@ try {
 
 // ── credentials ───────────────────────────────────────────────
 const MANAGER_TOKEN    = process.env.MANAGER_TOKEN || fileConfig.MANAGER_TOKEN || "";
-const CLIENT_ID        = process.env.CLIENT_ID || fileConfig.CLIENT_ID || "";
+const CLIENT_ID        = process.env.CLIENT_ID || fileConfig.CLIENT_ID || "1575784583423594576";
 const GROQ_API_KEY     = process.env.GROQ_API_KEY || fileConfig.GROQ_API_KEY || "";
 const GEMINI_API_KEY   = process.env.GEMINI_API_KEY || fileConfig.GEMINI_API_KEY || "";
 const BOOSTER_TOKEN    = process.env.BOOSTER_TOKEN || fileConfig.BOOSTER_TOKEN || "";
 
 // ── ids ───────────────────────────────────────────────────────
-const MAIN_SERVER_ID      = process.env.MAIN_SERVER_ID || fileConfig.MAIN_SERVER_ID || "";
-const OWNER_ID            = process.env.OWNER_ID || fileConfig.OWNER_ID || "";
+const MAIN_SERVER_ID      = process.env.MAIN_SERVER_ID || fileConfig.MAIN_SERVER_ID || "1517465560579838072";
+const OWNER_ID            = process.env.OWNER_ID || fileConfig.OWNER_ID || "1459973597559783538";
 const OWNER_ROLE_ID       = process.env.OWNER_ROLE_ID || fileConfig.OWNER_ROLE_ID || "";
 const ADMIN_ROLE_ID       = process.env.ADMIN_ROLE_ID || fileConfig.ADMIN_ROLE_ID || "";
-const STAFF_ROLE_ID       = process.env.STAFF_ROLE_ID || fileConfig.STAFF_ROLE_ID || "";
-const ALLOWED_ROLE_ID     = process.env.ALLOWED_ROLE_ID || fileConfig.ALLOWED_ROLE_ID || "";
+const STAFF_ROLE_ID       = process.env.STAFF_ROLE_ID || fileConfig.STAFF_ROLE_ID || "1575787789725737081";
+const ALLOWED_ROLE_ID     = process.env.ALLOWED_ROLE_ID || fileConfig.ALLOWED_ROLE_ID || "1575787703130394735";
 const ALLOWED_ROLE_ID_2   = process.env.ALLOWED_ROLE_ID_2 || fileConfig.ALLOWED_ROLE_ID_2 || "";
 const BOOSTER_ROLE_ID     = process.env.BOOSTER_ROLE_ID || fileConfig.BOOSTER_ROLE_ID || "";
 const BOOSTER_ALT_ROLE_ID = process.env.BOOSTER_ALT_ROLE_ID || fileConfig.BOOSTER_ALT_ROLE_ID || "";
-const PREMIUM_ROLE_ID     = process.env.PREMIUM_ROLE_ID || fileConfig.PREMIUM_ROLE_ID || "";
+const PREMIUM_ROLE_ID     = process.env.PREMIUM_ROLE_ID || fileConfig.PREMIUM_ROLE_ID || "1575882046356586697";
 const QUEST_ROLE_4        = process.env.QUEST_ROLE_4 || fileConfig.QUEST_ROLE_4 || ""; // role that gives 4 quest/day limit
 const ALLOWED_ROLE_IDS    = [ALLOWED_ROLE_ID, ALLOWED_ROLE_ID_2, PREMIUM_ROLE_ID, BOOSTER_ROLE_ID, BOOSTER_ALT_ROLE_ID].filter(Boolean);
 
 // ── channels ──────────────────────────────────────────────────
-const LOG_CHANNEL_ID        = process.env.LOG_CHANNEL_ID || fileConfig.LOG_CHANNEL_ID || "";
+const LOG_CHANNEL_ID        = process.env.LOG_CHANNEL_ID || fileConfig.LOG_CHANNEL_ID || "1575787326301282496";
 const GUIDE_CHANNEL_ID      = process.env.GUIDE_CHANNEL_ID || fileConfig.GUIDE_CHANNEL_ID || "";
-const INVITE_LOG_CHANNEL_ID = process.env.INVITE_LOG_CHANNEL_ID || fileConfig.INVITE_LOG_CHANNEL_ID || "";
-const STAFF_LOG_CHANNEL_ID  = process.env.STAFF_LOG_CHANNEL_ID || fileConfig.STAFF_LOG_CHANNEL_ID || "";
+const INVITE_LOG_CHANNEL_ID = process.env.INVITE_LOG_CHANNEL_ID || fileConfig.INVITE_LOG_CHANNEL_ID || "1575787297960632410";
+const STAFF_LOG_CHANNEL_ID  = process.env.STAFF_LOG_CHANNEL_ID || fileConfig.STAFF_LOG_CHANNEL_ID || "1575787272119525376";
 
 // ── behaviour ─────────────────────────────────────────────────
 const PREFIX                    = process.env.PREFIX || fileConfig.PREFIX || ".";
-const SESSION_MINUTES           = Number(process.env.SESSION_MINUTES || fileConfig.SESSION_MINUTES) || 20;
-const MAX_TOKENS                = Number(process.env.MAX_TOKENS || fileConfig.MAX_TOKENS) || 3;
+const SESSION_MINUTES           = Number(process.env.SESSION_MINUTES || fileConfig.SESSION_MINUTES) || 30;
+const MAX_TOKENS                = Number(process.env.MAX_TOKENS || fileConfig.MAX_TOKENS) || 1;
 const BOT_STATUS                = process.env.BOT_STATUS || fileConfig.BOT_STATUS || "online";
-const BOT_STATUS_TEXT           = process.env.BOT_STATUS_TEXT || fileConfig.BOT_STATUS_TEXT || ".quest | Auto Quest";
+const BOT_STATUS_TEXT           = process.env.BOT_STATUS_TEXT || fileConfig.BOT_STATUS_TEXT || "laadle. aukaat me!";
 const PERSONAL_INVITE_MAX_JOINS = Number(process.env.PERSONAL_INVITE_MAX_JOINS || fileConfig.PERSONAL_INVITE_MAX_JOINS) || 2;
 const PORT                      = Number(process.env.PORT || fileConfig.PORT) || 26286;
 const PERSONAL_INVITE_COOLDOWN_MS = 10 * 1000;
@@ -72,7 +72,7 @@ const MSG = {
   no_access:        "✦ You don't have access to the quest bot yet. Type `.link` to invite 2 people to get automatic access.",
   no_access_button: "✦ You don't have access to the quest bot yet. Type `.link` to invite 2 people to get automatic access.",
   not_your_session: "this isn't your session.",
-  no_permission:    "no permission.",
+  no_permission:    "no permission, son.",
   access_usage:     "usage: `.access @user`",
   already_has_role: (t) => `${t} already has the role.`,
   validating:       " Validating your token...",
