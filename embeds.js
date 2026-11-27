@@ -108,7 +108,7 @@ function buildQuestProgressComponents(quests, done, maxQuests = Infinity, stoppe
       .addSeparatorComponents(new SeparatorBuilder())
       .addTextDisplayComponents(
         new TextDisplayBuilder().setContent(
-          `-# session was stopped via .stop  ·  𝜗𝜚 .gg/coquettes`
+          `-# session was stopped via .stop  ·  𝜗𝜚 Gulbano | Auto Quest`
         )
       );
   } else if (done) {
@@ -122,7 +122,7 @@ function buildQuestProgressComponents(quests, done, maxQuests = Infinity, stoppe
         new TextDisplayBuilder().setContent(
           limitReached
             ? `-# you reached your today's limit  ·  come back tomorrow`
-            : `-# ✓ ${succeeded} done${failed ? `  ·  ✗ ${failed} failed` : ""}  ·  𝜗𝜚 .gg/coquettes`
+            : `-# ✓ ${succeeded} done${failed ? `  ·  ✗ ${failed} failed` : ""}  ·  𝜗𝜚 Gulbano | Auto Quest`
         )
       );
   }
