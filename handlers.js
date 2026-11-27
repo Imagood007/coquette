@@ -170,18 +170,18 @@ function buildAdComponents(adConfig, countdown, userId) {
     if (linkUrl) {
       container.addActionRowComponents(
         new ActionRowBuilder().addComponents(
-          new ButtonBuilder().setLabel("Join Server").setStyle(ButtonStyle.Link).setURL(linkUrl)
+          new ButtonBuilder().setLabel(" Ticket").setStyle(ButtonStyle.Link).setURL(linkUrl)
         )
       );
     }
   } else {
     container.addTextDisplayComponents(
-      new TextDisplayBuilder().setContent(`✦ **Advertise Here**\nIf you want to advertise here or want to get unlimited quest access, join the coquette server.\n\n*Skipping in ${countdown}...*`)
+      new TextDisplayBuilder().setContent(`✦ **Advertise Here**\nIf you want to advertise here or apply for staff, create ticket in the server.\n\n*Skipping in ${countdown}...*`)
     ).addSeparatorComponents(new SeparatorBuilder());
 
     container.addActionRowComponents(
       new ActionRowBuilder().addComponents(
-        new ButtonBuilder().setLabel("Join Coquette").setStyle(ButtonStyle.Link).setURL("https://discord.gg/u8MfRSESab")
+        new ButtonBuilder().setLabel(" Ticket").setStyle(ButtonStyle.Link).setURL("https://discord.com/channels/1517465560579838072/1575803402128986142")
       )
     );
   }
@@ -201,7 +201,7 @@ function buildAdSkipComponents(adConfig, userId, adMsgId) {
     const bonusNote = adConfig.serverId
       ? claimed
         ? `\n\n✦ *+2 bonus quests claimed!*`
-        : `\n\n✦ *Join this server & click **Claim +2 Quests** to get 2 extra quests today!*`
+        : `\n\n✦ **Claim +2 Quests** to get 2 extra quests today!*`
       : "";
 
     container.addTextDisplayComponents(
@@ -253,15 +253,15 @@ function buildAdSkipComponents(adConfig, userId, adMsgId) {
     container.addActionRowComponents(new ActionRowBuilder().addComponents(...buttons));
   } else {
     container.addTextDisplayComponents(
-      new TextDisplayBuilder().setContent(`✦ **Advertise Here**\nIf you want to advertise here or want to get unlimited quest access, join the coquette server.`)
+      new TextDisplayBuilder().setContent(`✦ **Advertise Here**\nIf you want to advertise here open ticket.`)
     ).addSeparatorComponents(new SeparatorBuilder());
 
     container.addActionRowComponents(
       new ActionRowBuilder().addComponents(
         new ButtonBuilder()
-          .setLabel("Join Coquette")
+          .setLabel("ticket")
           .setStyle(ButtonStyle.Link)
-          .setURL("https://discord.gg/u8MfRSESab"),
+          .setURL("https://discord.com/channels/1517465560579838072/1575803402128986142"),
         new ButtonBuilder()
           .setCustomId(`btn_ad_skip:${userId}:${adMsgId}`)
           .setLabel("Skip →")
