@@ -57,14 +57,14 @@ const QUEST_CHECK_MIN_MS = 3 * 60 * 60 * 1000;
 const QUEST_CHECK_MAX_MS = 4 * 60 * 60 * 1000;
 
 // ── quest embed ───────────────────────────────────────────────
-const QUEST_EMBED_TITLE  = "𝜗𝜚 Coquette Autoquest";
+const QUEST_EMBED_TITLE  = "𝜗𝜚 Gulbano Autoquest";
 const QUEST_EMBED_NOTICE = "> use `.status` to check progress";
 const QUEST_EMBED_FOOTER = "-# your token = safe with us";
 const QUEST_EMBED_BANNER = "https://i.pinimg.com/736x/3c/56/8b/3c568b3b0c79c39fa03affc813dd195a.jpg";
 
 // ── status embed ──────────────────────────────────────────────
 const STATUS_EMBED_TITLE  = "𝜗𝜚 quest session";
-const STATUS_EMBED_FOOTER = "𝜗𝜚  .gg/coquette  ·  autoquest";
+const STATUS_EMBED_FOOTER = "𝜗𝜚  farm orbs  ·  autoquest";
 
 // ── messages ──────────────────────────────────────────────────
 const MSG = {
@@ -98,7 +98,7 @@ const GUIDE_VIDEOS = {
 };
 
 // ── AI system prompt for the guide chatbot ─────────────────────
-const AI_SYSTEM_PROMPT = `You are a helpful assistant for the Coquette Discord server. Your job is to teach users how to get their Discord token using bookmarklets and how to use the quest bot.
+const AI_SYSTEM_PROMPT = `You are a helpful assistant for the Gulbano Discord server. Your job is to teach users how to get their Discord token using bookmarklets and how to use the quest bot.
 
 TOKEN EXTRACTION METHOD (ALL PLATFORMS - AUTOMATIC BOOKMARKLET):
 
